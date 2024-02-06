@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Video-LaVIT: Unified Video-Language Pre-training with Decoupled Visual-Motional Tokenization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video-LaVIT</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Video-LaVIT: Unified Video-Language Pre-training with Decoupled Visual-Motional Tokenization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href=".">Yang Jin</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://feifeiobama.github.io">Zhicheng Sun</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Kun Xu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Kun Xu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Liwei Chen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Hao Jiang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Quzhe Huang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Chengru Song</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Yuliang Liu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Di Zhang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Yang Song</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href=".">Kun Gai</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.muyadong.com">Yadong Mu</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Peking University,</span>
+            <span class="author-block"><sup>2</sup>Kuaishou Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2402.03161"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/jy0205/LaVIT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-centered has-text-centered">Multimodal Generation</h2>
+    <h3 class="is-centered has-text-centered is-size-5">Text-to-Image Generation</h3>
+    <div class="carousel results-carousel">
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Horse running, becoming oil painting style<br>&nbsp;<br>&nbsp;</div>
+        <figure>
+          <img src="./static/images/horse.jpg" alt="horse">
+        </figure>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">An origami fox walking through the forest<br>&nbsp;<br>&nbsp;</div>
+        <figure>
+          <img src="./static/images/fox.jpg" alt="fox">
+        </figure>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A squirrel is inside a giant bright shiny crystal ball on the surface of blue ocean. There are few clouds in the sky</div>
+        <figure>
+          <img src="./static/images/squirrel.jpg" alt="squirrel">
+        </figure>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Robot emerging from a large column of billowing black smoke, high quality<br>&nbsp;</div>
+        <figure>
+          <img src="./static/images/robot.jpg" alt="robot">
+        </figure>
+      </div>
+      
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A steaming cup of coffee with mountains in the background. Resting during road trip<br>&nbsp;</div>
+        <figure>
+          <img src="./static/images/coffee.jpg" alt="coffee">
+        </figure>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Unicorn running, becoming oil painting style<br>&nbsp;<br>&nbsp;</div>
+        <figure>
+          <img src="./static/images/unicorn.jpg" alt="unicorn">
+        </figure>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Close up headshot, futuristic young woman, wild hair sly smile in front of gigantic UFO, dslr, sharp focus, dynamic composition</div>
+        <figure>
+          <img src="./static/images/ufo.jpg" alt="ufo">
+        </figure>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">The moon ascends in the background, bringing nightfall around an anime girl<br>&nbsp;</div>
+        <figure>
+          <img src="./static/images/moon.jpg" alt="moon">
+        </figure>
+      </div>
+    </div>
+    <br>
+    <h3 class="is-centered has-text-centered is-size-5">Text-to-Video Generation</h3>
+    <div class="carousel results-carousel">
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A girl is writing something on a book. Oil painting style<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/writing_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Two raccoons on motor bikes on a mountain road surrounded by pine trees, high definition, photo-realistic style</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/raccoon_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">The sun breaks through the clouds from the heights of a skyscraper<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/skyscraper_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A steam train moving on a mountainside by Vincent van Gogh<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/steam_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">First-person view running through the woods and approaching a large beautiful cabin, highly detailed</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/cabin_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A sailboat is sailing on a sunny day in a mountain lake<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/lake_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Flying through an intense battle between pirate ships in a stormy ocean<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/battle_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A majestic eagle soars gracefully over a breathtaking mountain range, photorealistic<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/eagle_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">The orient express driving through a fantasy landscape, animated oil on canvas<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/express_square.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A jeep car is moving on the beach<br>&nbsp;<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/jeep_square.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="carousel results-carousel">
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A boat sailing leisurely along the Seine River with the Eiffel Tower in background by Vincent van Gogh</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/seine_wide.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">POV footage of approaching a small cottage covered in moss and many flowers, tilt shift, arc shot</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/cottage_wide.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Fancy skyscraper at night in flames<br>&nbsp;<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/flame_wide.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">Waves crashing against a lone lighthouse, ominous lighting<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/lighthouse_wide.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">FPV drone footage of an ancient city in autumn<br>&nbsp;<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/ancient_wide.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">FPV drone footage entering a cyberpunk city at night with many neon lights and reflective surfaces<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/cyberpunk_wide.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <br>
+    <h3 class="is-centered has-text-centered is-size-5">Image-to-Video Generation</h3>
+    <div class="carousel results-carousel">
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/cat_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/goat_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/cloud_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/teddy2_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/catus_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/hiker_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/dog_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/teddy_i2v.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <br>
+    <h3 class="is-centered has-text-centered is-size-5">Long Video Generation</h3>
+    <div class="carousel results-carousel">
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A dog in the sun<br>&nbsp;<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/dog_long.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A 360 shot of a sleek yacht sailing gracefully through the crystal-clear waters of the Caribbean<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/yacht_long.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">First-person view running through the woods and approaching a large beautiful cabin, highly detailed</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/cabin_long.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="carousel-item" style="text-align: center;">
+        <div class="item-prompt">A jeep car is moving on the beach<br>&nbsp;<br>&nbsp;</div>
+        <video poster="" autoplay muted loop playsinline>
+          <source src="./static/videos/jeep_long.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <br>
+    <h3 class="is-centered has-text-centered is-size-5">Quantitative Results</h3>
+    <figure>
+      <img src="./static/images/t2v.jpg" alt="Zero-shot text-to-video generation performance.">
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-centered has-text-centered">Multimodal Understanding</h2>
+    <h3 class="is-centered has-text-centered is-size-5">Image Understanding Performance</h3>
+    <figure>
+      <img src="./static/images/image_qa.jpg" alt="Image understanding performance.">
+    </figure>
+    <br>
+    <h3 class="is-centered has-text-centered is-size-5">Video Understanding Performance</h3>
+    <figure>
+      <img src="./static/images/video_qa.jpg" alt="Zero-shot video question answering performance.">
+    </figure>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template credit to <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
